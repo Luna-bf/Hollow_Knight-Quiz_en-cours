@@ -1,4 +1,4 @@
-//Variable let qui contiendra les réponses au quiz
+//Variable qui contiendra les réponses au quiz
 let quizResults = document.querySelector('#results');
 
 //Les différentes questions et réponses possibles, ainsi que la réponse juste
