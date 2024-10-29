@@ -1,75 +1,100 @@
 //Variable qui contiendra les réponses au quiz
+const quizContainer = document.querySelector('#quiz');
+const submitBtn = document.querySelector('#submitAnswers');
 let quizResults = document.querySelector('#results');
 
 //Les différentes questions et réponses possibles, ainsi que la réponse juste
 const quizData = [
 {
-    question: 'What is the name of this character ?',
+    questionTitle: 'What is the name of this character ?',
     options: {
-        A: 'Spider-lady',
-        B: 'Hornet',
-        C: 'Princess-Protector',
-        D: 'The Gendered Child'
+        a: 'Spider-lady',
+        b: 'Hornet',
+        c: 'Princess-Protector',
+        d: 'The Gendered Child'
     },
     
-    correctAnswer: 'B',
+    correctAnswer: 'b',
 },
 
 {
-    question: 'How do you upgrade your nail ?',
+    questionTitle: 'How do you upgrade your nail ?',
     options: {
-        A: 'By beating a certain amount of ennemies',
-        B: 'With a certain amount of Pale Ore',
-        C: 'By talking to very specific NPCs',
-        D: 'You can\'t'
+        a: 'By beating a certain amount of ennemies',
+        b: 'With a certain amount of Pale Ore',
+        c: 'By talking to a very specific NPC',
+        d: 'You can\'t'
     },
 
-    correctAnswer: 'B'
+    correctAnswer: 'b'
 },
 
 {
-    question: 'What is the name this area ?',
+    questionTitle: 'What is the name this area ?',
     options: {
-        A: 'Kingdom\'s Edge',
-        B: 'Resting grounds',
-        C: 'Crystal Peak',
-        D: 'The Hive'
+        a: 'Kingdom\'s Edge',
+        b: 'Resting grounds',
+        c: 'Crystal Peak',
+        d: 'The Hive'
     },
     
-    correctAnswer: 'D'
+    correctAnswer: 'd'
 },
 
 {
-    question: 'Which achievement does this symbol represent ?',
+    questionTitle: 'Which achievement does this symbol represent ?',
     options: {
-        A: 'Masked : Acquire all Masks Shards',
-        B: 'Steel Soul : Finish the game in Steel Soul mode',
-        C: 'Speedrun 2 : Complete the game in under 5 hours',
-        D: 'Attunement : Collect 600 Essence',
+        a: 'Masked : Acquire all Masks Shards',
+        b: 'Steel Soul : Finish the game in Steel Soul mode',
+        c: 'Speedrun 2 : Complete the game in under 5 hours',
+        d: 'Attunement : Collect 600 Essence',
     },
     
-    correctAnswer: 'A'
+    correctAnswer: 'a'
 },
 
 {
-    question: 'What is the kingdom\'s name ?',
+    questionTitle: 'What is the kingdom\'s name in Hollow Knight ?',
     options: {
-        A: 'Mushroom Kingdom',
-        B: 'Pharloom',
-        C: 'Hallownest',
-        D: 'It doesn\'t have a canon name'
+        a: 'Mushroom Kingdom',
+        b: 'Pharloom',
+        c: 'Hallownest',
+        d: 'Eternal Kingdom'
     },
     
-    correctAnswer: 'C'
+    correctAnswer: 'c'
 }
 
 ];
 
 //Fonction qui va faire fonctionner mon quiz
-function buildQuiz() {
-    
-    const answers = [];
-    
-    //Pour chaque question
-    
+function myQuiz() {
+    //Tableau qui va me permettre de stocker toutes les réponses possibles
+    const finalResult = [];
+        
+    //Boucle et le code qui sera effectué pour chaque question
+    quizData.forEach((currentOption, optionNumber) => {
+        const options = [];
+
+        for(letter in currentOption.options) {
+
+            //J'ajoute un bouton 'radio' avec .push() car options est un tableau
+            //letter représente la lettre à laquelle est assignée chaque option
+            options.push(`<label><input type="radio" name="question${optionNumber}" value="${letter}">${currentOption.options[letter]}</label>`);
+        } 
+            
+        //Puis j'ajoute la question et sa réponse au tableau finalResult
+        finalResult.push(`
+            <div class="option">${currentOption.questionTitle}</div>
+            <div class="answers">${options.join('')}</div>`
+        );
+    });
+
+    //Enfin, on combine les résultats en une chaine de caractère avec join('') et que 
+    //l'on affiche sur la page avec innerHTML. On met tout cela dans la balise qui va
+    //contenir notre quiz et ses réponses (ici c'est la balise avec l'id 'quizContainer')
+    quizContainer.innerHTML = finalResult.join('');
 }
+
+//Ensuite, j'appelle ma function myQuiz() pour afficher le tout sur la page
+myQuiz();
