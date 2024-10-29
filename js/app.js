@@ -6,7 +6,7 @@ let quizResults = document.querySelector('#results');
 //Les différentes questions et réponses possibles, ainsi que la réponse juste
 const quizData = [
 {
-    url: './imgs/hollow_knight_character.png',
+    questionImg: './imgs/character.png',
     questionTitle: 'What is the name of this character ?',
     options: {
         a: 'Spider-lady',
@@ -58,7 +58,7 @@ const quizData = [
 },
 
 {
-    questionImg: './imgs/hollow_knight_character.png',
+    questionImg: './imgs/character.png',
     questionTitle: 'What is the kingdom\'s name in Hollow Knight ?',
     options: {
         a: 'Mushroom Kingdom',
@@ -89,7 +89,7 @@ function myQuiz() {
                 `
                 <label><input type="radio" name="question${optionNumber}" value="${letter}">${currentOption.options[letter]}</label>
                 `);
-        } 
+        }
             
         //Puis j'ajoute la question et sa réponse au tableau finalResult
         finalResult.push(`
@@ -114,6 +114,8 @@ myQuiz();
 //Event listener et fonction qui vont afficher mes résultats
 submitAnswersBtn.addEventListener('click', showResults); {
     function showResults() {
-
+        //Je sélectionne toutes les réponses présentes dans quizContainer et je les range dans answersContainer
+        const answersContainer = quizContainer.querySelectorAll('.answers');
+        
     }
 };
