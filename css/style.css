@@ -1,1 +1,15 @@
+div {
+    margin-bottom: 1.5em;
+}
 
+label {
+    margin: 1em 1rem 2em 0;
+}
+
+img {
+    width: 100%;
+}
+
+article {
+    width: 25%;
+}
